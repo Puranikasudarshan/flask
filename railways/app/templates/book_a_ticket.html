@@ -1,0 +1,124 @@
+{% extends 'Base.html' %}
+    {% block content%}
+        <div class = "container-fluid">
+            <div class = "row">
+                <div class = "col-md-4 col-sm-4 col-xs-12"></div>
+                <div class = "col-md-4 col-sm-4 col-xs-12">
+                        <form class = "form-conatiner cl " action = "" method = "POST">
+                            {{ form.hidden_tag() }}
+                            <fieldset class = "form-group ">
+                                <legend class = "border bottom-md-4 text-center cl">Book</legend>
+                                <div class = "form-group">
+                                    {{ form.name.label(class = "form-control-label") }}
+                                    {% if form.name.errors %}
+                                        {{ form.name(class = "form-control form-control-lg is-invalid") }}
+                                        <div class = "invalid-feedback">
+                                            {% for error in form.name.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.name(placeholder = "name", class = "form-control")}}
+                                    {% endif %}
+                                </div>
+                                <div class = "form-group">
+                                    {{ form.Age.label(class = "form-control-label") }}
+                                    {% if form.Age.errors %}
+                                        {{ form.Age(class = "form-control form-control-lg is-invalid") }}
+                                        <div class = "invalid-feedback">
+                                            {% for error in form.Age.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.Age(placeholder = "Age", class = "form-control")}}
+                                    {% endif %}
+                                </div>
+                                <div class = "form-group">
+                                    {{ form.source.label(class = "form-control-label") }}
+                                    {% if form.source.errors %}
+                                        {{ form.source(class = "form-control form-control-lg is-invalid") }}
+                                        <div class = "invalid-feedback">
+                                            {% for error in form.source.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.source(placeholder = "source", class = "form-control",  disabled = True)}}
+                                    {% endif %}
+                                </div>
+                                <div class = "form-group">
+                                    {{ form.destination.label(class = "form-control-label") }}
+                                    {% if form.destination.errors %}
+                                        {{ form.destination(class = "form-control form-control-lg is-invalid") }}
+                                        <div class = "invalid-feedback">
+                                            {% for error in form.destination.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.destination(placeholder = "destination", class = "form-control", disabled = True)}}
+                                    {% endif %}
+                                </div>
+                                <div class = "form-group">
+                                    {{ form.fare.label(class = "form-control-label") }}
+                                    {% if form.fare.errors %}
+                                        {{ form.fare(class = "form-control form-control-lg is-invalid") }}
+                                        <div class = "invalid-feedback">
+                                            {% for error in form.fare.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.fare(placeholder = "fare", class = "form-control", disabled = True)}}
+                                    {% endif %}
+                                </div>
+                                <div class = "form-group">
+                                    {{ form.train_name.label(class = "form-control-label") }}
+                                    {% if form.train_name.errors %}
+                                        {{ form.train_name(class = "form-control form-control-lg is-invalid") }}
+                                        <div class = "invalid-feedback">
+                                            {% for error in form.train_name.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.train_name(placeholder = "train_name", class = "form-control", disabled = True)}}
+                                    {% endif %}
+                                </div>
+                                <div class = "form-group">
+                                    {{ form.Date.label(class = "form-control-label") }}
+                                    {% if form.Date.errors %}
+                                        {{ form.Date(class = "form-control form-control-lg is-invalid") }}
+                                        <div class = "invalid-feedback">
+                                            {% for error in form.Date.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.Date(placeholder = "dd-mm-yyyy", class = "form-control")}}
+                                    {% endif %}
+                                </div>
+                                <div class = "form-group">
+                                    {{ form.gender.label(class = "form-control-label") }}
+                                    {% if form.gender.errors %}
+                                        {{ form.gender(class = "is-invalid") }}<br>
+                                        <div class = "invalid-feedback">
+                                            {% for error in form.gender.errors %}
+                                                <span>{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.gender()}}<br>
+                                    {% endif %}
+                                </div>
+                            </fieldset>
+                            <div class = "form-group">
+                                {{ form.submit(class = "btn btn-success btn-block") }}<br>
+                            </div>
+                        </form>
+                        <div class = "col-md-4 col-sm-4 col-xs-12"></div>
+                    </div>
+                </div>
+            </div>
+{% endblock content%}

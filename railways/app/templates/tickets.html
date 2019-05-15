@@ -1,0 +1,29 @@
+{% extends 'Base.html' %}
+    {% block content %}
+
+     {% for ticket in tickets.items %}
+                {% if ticket.author == current_user %}
+                <div class="col-lg-6 col-md-6">
+                <div class = "card">
+                <div class = "card-body">
+                  <h2 class = "text-center text-capitalize"><a href= "{{ url_for('bookedticketme',ticket_id=ticket.id) }}">{{ ticket.source }} To {{ticket.destination}}</a></h2>
+                <h2 class = "text-center">journey on {{ticket.date.strftime('%d-%m-%y')}}</h2>
+                </div>
+                </div>
+                </div>
+                {% endif %}
+     {% endfor %}
+     <div class = "container-fluid">
+        {% for page_num in tickets.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+            {% if page_num %}
+                {% if tickets.page == page_num %}
+                <a class="btn btn-outline-info mb-4 cl" href = "{{url_for('bookedticket', page = page_num) }}">{{ page_num }}</a>
+                {% else %}
+                <a class="btn btn-outline-info mb-4 cl" href = "{{url_for('bookedticket', page = page_num) }}">{{ page_num }}</a>
+                {% endif %}
+            {% else %}
+                '''
+            {% endif %}
+        {% endfor %}
+   </div>
+    {% endblock content %}

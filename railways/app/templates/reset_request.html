@@ -1,0 +1,32 @@
+  {% extends 'Base.html' %}
+  {% block content %}
+  <div class = "container-fluid">
+  <div class = "row">
+          <div class = "col-md-4 col-sm-4 col-xs-12"></div>
+          <div class = "col-md-4 col-sm-4 col-xs-12">
+              <form  class = "form-conatiner cl" action = "" method = "POST">
+                  {{ form.hidden_tag() }}
+                  <legend class = "border bottom-md-4 text-center cl">Login</legend>
+                  <div class = "form-group">
+                          {{ form.email.label(class="form-control-label") }}<br>
+                          {% if form.email.errors %}
+                              {{ form.email(class="form-control form-control-lg is-invalid") }}
+                              <div class="invalid-feedback">
+                                  {% for error in form.email.errors %}
+                                      <span>{{ error }}</span>
+                                  {% endfor %}
+                              </div>
+                          {% else %}
+                            {{ form.email(placeholder = "Email id", class = "form-control") }}
+                          {% endif %}
+                  </div>
+                  <div class = "form-group">
+                      {{ form.submit(class = "btn btn-success btn-block") }}<br>
+                  </div>
+                </form>
+                <div class = "col-md-4 col-sm-4 col-xs-12"></div>
+      </div>
+      </div>
+      </div>
+
+  {% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'Base.html' %}
+{% block content %}
+  <div class="container-fluid">
+    {% if ticket.author == current_user %}
+    <div class="col-lg-6 col-md-6">
+    <div class = "card">
+      <h2 class = "text-center text-capitalize"><a href= "{{ url_for('bookedticketme', ticket_id=ticket.id) }}">{{ ticket.source }} to {{ticket.destination }}</a></h2>
+      <p class = "text-center">
+        {{ ticket.date }}
+      </p>
+      <h4 class = "text-capitalize text-center"><a  href = "{{ url_for('bookedticketdelete',ticket_id=ticket.id) }}">delete</a></h4>
+    {% endif %}
+  </div>
+</div>
+</div>
+
+{% endblock content %}

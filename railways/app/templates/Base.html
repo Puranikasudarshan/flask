@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        {% if title %}
+            <title>railways - {{ title }}</title>
+        {% else %}
+            <title>railways home</title>
+        {% endif %}
+
+        <link href = "{{ url_for('static', filename = 'global.css') }}" type = "text/css" rel = "stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+      <div class = "col-lg-4 col-md-4">
+      <img class = "image" src = "{{ url_for('static', filename = 'logo.png')}}">
+    </div>
+    <div class = "container-fluid">
+        <h1> INDIAN RAILWAYS</h1>
+         <marquee class = "text-capitalize cl">Welcome to Indian Railways</marquee>
+    </div>
+        <nav class = "navbar navbar-inverse co">
+            <div class = "container-fluid">
+                <div class = "navbar-header">
+                    <a class = "navbar-brand" href = "{{url_for('home')}}">Indian Railways</a>
+                </div>
+                <ul class = "nav navbar-nav">
+                    <li><a href = "{{'about'}}">About us</a></li>
+                </ul>
+                <ul class = "nav navbar-nav">
+                    <li><a href = "{{url_for('gallery')}}">Gallery</a></li>
+                </ul>
+                <ul class = "nav navbar-nav">
+                    <li><a href = "{{url_for('search_train')}}"><span class = "glyphicon glyphicon-search"> Search</span></a></li>
+                </ul>
+                {% if current_user.is_authenticated %}
+                    <ul class = "nav navbar-nav">
+                        <li><a href = "{{ url_for('account')}}">Account</a></li>
+                    </ul>
+                    <ul class = "nav navbar-nav">
+                        <li><a href = "{{url_for('bookedticket')}}">Booked Tickets</a></li>
+                    </ul>
+                    <ul class = "nav navbar-nav navbar-right co">
+                        <li><a href = "{{url_for('logout')}}"><span class = "glyphicon glyphicon-log-out"> Logout</span></a></li>
+                    </ul>
+                {% else %}
+                    <ul class = "nav navbar-nav navbar-right co">
+                    <li><a href = "{{url_for('login')}}"><span class = "glyphicon glyphicon-log-in"> Login</span></a></li>
+                    <li><a href = "{{url_for('register')}}"><span class = "glyphicon glyphicon-user"> Register</span></a></li>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% with messages = get_flashed_messages(with_categories = true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class = "alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block content  %}
+        {% endblock content %}
+
+    </body>
+
+
+
+</html>

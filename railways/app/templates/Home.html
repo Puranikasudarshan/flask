@@ -1,0 +1,17 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+<div class  = "container-fluid card1">
+  <h3 class = "text-capitalize text-center">available trains</h3>
+  {% for train in trains %}
+    {% for station in stations %}
+      {% if train.station_code == station.id %}
+        <p class = "text-capitalize">
+          train no {{ train.train_no }}<br>
+          {{ train.source }} to  {{ station.station_name }}<br>
+          {{ train.departure_time}} - {{ station.arrival_time }}</p>
+      {% endif %}
+  {% endfor %}
+{% endfor %}
+</div>
+{% endblock content %}
